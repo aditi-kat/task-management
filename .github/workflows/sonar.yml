@@ -10,6 +10,7 @@ on:
 
 jobs:
   sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +22,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         working-directory: server
         run: npm install
 
-      - name: Run SonarCloud Scan
+      - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           projectBaseDir: .
