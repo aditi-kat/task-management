@@ -1,0 +1,32 @@
+name: SonarQube Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install backend dependencies
+        working-directory: server
+        run: npm install
+
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v1.0.0
+        with:
+          projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://your-sonarqube-server-url
