@@ -10,10 +10,11 @@ on:
 
 jobs:
   sonarcloud:
+    name: SonarCloud Scan
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Node.js
