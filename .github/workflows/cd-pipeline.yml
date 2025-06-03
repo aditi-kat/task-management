@@ -1,3 +1,11 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -10,13 +18,16 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
-        working-directory: ./frontend   # <-- add this line
+        run: |
+          cd frontend
+          npm install
 
       - name: Run tests
-        run: npm test
-        working-directory: ./frontend   # <-- add this line
+        run: |
+          cd frontend
+          npm test
 
       - name: Build
-        run: npm run build
-        working-directory: ./frontend   # <-- add this line
+        run: |
+          cd frontend
+          npm run build
