@@ -1,4 +1,4 @@
-name: SonarCloud Scan
+name: SonarCloud
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   sonarcloud:
+    name: SonarCloud Scan
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +20,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         working-directory: server
         run: npm install
 
-      - name: SonarCloud Scan
+      - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
