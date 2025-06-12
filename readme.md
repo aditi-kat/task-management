@@ -169,3 +169,4 @@ This is a full-stack Task Manager web application that allows users to manage th
 - **Frontend:** Deploy on **Vercel, Netlify, or Firebase Hosting**
 - **Backend:** Deploy on **Vercel**
 - **Database:** Use **MongoDB Atlas**
+Updated!!
